@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 09/16/2025 01:43:04 PM
+// Create Date: 09/16/2025 01:50:06 PM
 // Design Name: 
-// Module Name: top
+// Module Name: adder_display
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(
+module adder_display(
     input [3:0] A,
     input [3:0] B,
     output [6:0] seg
@@ -29,7 +29,6 @@ module top(
     wire [4:0] sum;
 	
 	FA_4_carry_look adder(.A(A), .B(B), .S_f(sum));
-	segment_7_binary converter(.S_f(sum[3:0]), .seg(seg));
+	segment_7_binary converter(.data_in(sum[3:0]), .seg(seg));
 
-    
 endmodule

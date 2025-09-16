@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 09/16/2025 01:43:04 PM
+// Create Date: 09/09/2025 01:50:02 PM
 // Design Name: 
-// Module Name: top
+// Module Name: FA
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(
-    input [3:0] A,
-    input [3:0] B,
-    output [6:0] seg
+module FA(
+    input A,
+    input B,
+    input Cin,
+    output S,
+    output Cout
     );
     
-    wire [4:0] sum;
-	
-	FA_4_carry_look adder(.A(A), .B(B), .S_f(sum));
-	segment_7_binary converter(.S_f(sum[3:0]), .seg(seg));
-
-    
+    //dataflow style
+    assign S = A^B^Cin;
+    assign Cout = ((A^B)&Cin) | (A&B);
 endmodule

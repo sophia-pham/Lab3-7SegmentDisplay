@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 09/16/2025 01:43:04 PM
+// Create Date: 09/16/2025 01:54:18 PM
 // Design Name: 
-// Module Name: top
+// Module Name: segment_7_binary_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,16 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(
-    input [3:0] A,
-    input [3:0] B,
-    output [6:0] seg
-    );
-    
-    wire [4:0] sum;
-	
-	FA_4_carry_look adder(.A(A), .B(B), .S_f(sum));
-	segment_7_binary converter(.S_f(sum[3:0]), .seg(seg));
+module segment_7_binary_tb();
 
+    wire [6:0] seg;
+    reg [3:0] data_in;
     
+    segment_7_binary uut(.seg(seg), .data_in(data_in));
+    integer i;
+    
+    initial begin
+        for(i=0; i<10; i=i+1)begin 
+            data_in = i;
+            #5;
+           
+        end
+        $stop;
+    end
+
 endmodule
